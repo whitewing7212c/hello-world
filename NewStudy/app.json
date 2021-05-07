@@ -1,0 +1,28 @@
+{
+  "pages":[
+    "pages/schoolInfo/index",
+    "pages/index/index",
+    
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "学信查",
+    "navigationStyle": "custom", 
+    "navigationBarTextStyle":"white"
+  },
+  "plugins": {
+    "DimensionalShow": {
+      "version": "1.0.2",
+      "provider": "wx0f253bdf656bfa08"
+    }
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

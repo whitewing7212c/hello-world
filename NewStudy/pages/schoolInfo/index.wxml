@@ -1,0 +1,98 @@
+<!--pages/schoolInfo/index.wxml-->
+<view id="main-area" style="background-image:url('http://api.jianshankeji.com/models/img/zhuangshikuang1@3x.png')">
+<!--地图点击区域-->
+  <view class="mapPic" style="width:95vw;margin: 0 auto;position:relative;">
+    <image id="mianMap" src='http://api.jianshankeji.com/models/img/maps.png'  bindload="imageLoad" mode="widthFix" style="width:100%;height:100%;margin-top:0.5rem;"/>
+    <image src='{{currentMap}}' mode="widthFix" style="width:100%;height:100%;position:absolute;top:0.5rem;left:0rem;"/>
+    <block wx:for="{{InitSchool}}" wx:key="key" wx:for-index="idx" wx:for-item="itemName">
+      <image class="schoolIcons" src='{{itemName.schoolAreaIcon}}' data-id='{{idx}}' bindtap="setSchoolInfo" mode="widthFix" style="width:{{itemName.schoolpW*picRote}}px;height:{{itemName.schoolpH*picRote}}px;position:absolute;top:{{itemName.Top*picRote}}px;left:{{itemName.Left*picRote}}px;"/>
+    </block>
+    <view class="clearfloat"></view>
+  </view>
+</view>
+<view class="page-section" style="background-image: url('http://api.jianshankeji.com/models/img/fengexian@3x.png');">
+<!---按钮切换-->
+      <view class="page-section-spacing">
+        <scroll-view class="scroll-view_H" scroll-x="true" bindscroll="scroll" style="width: 100%">
+          <block  wx:for="{{areaType}}" wx:for-index="idx" wx:for-item="itemName">
+            <view bindtap="getarea" data-id='{{itemName.AreaId}}' id="demo{{itemName.AreaId}}" class="scroll-view-item_H demo-text-1 {{itemName.AreaId==btnCurrentId?'areabtnActive':'areabtn'}}">
+              <image src='{{itemName.AreaBtn}}' mode="widthFix" style="width:100%;height:100%;"/>           
+            </view>
+          </block>
+        </scroll-view>
+      </view>
+</view>
+<view id="main-videos">
+  <!---视频区域-->
+  <view id="video-titles">
+    <image class="video-about" mode="widthFix" src="http://api.jianshankeji.com/models/img/title_xuexiaojieshaoshipin@3x.png"  style="width:100%;vertical-align: bottom;"></image>
+  </view>
+  <view id="video-body" style="background-image:url('http://api.jianshankeji.com/models/img/zhuangshikuang2@3x.png');">
+    <video 
+      id="myVideo" 
+      src="{{currentSchoolInfo.schoolVideo}}" 
+      poster="http://img1.imgtn.bdimg.com/it/u=1563980539,1672265910&fm=26&gp=0.jpg"
+      binderror="videoErrorCallback" 
+      show-center-play-btn='{{false}}' 
+      show-play-btn="{{true}}" 
+      controls
+      picture-in-picture-mode="{{['push', 'pop']}}"
+      bindenterpictureinpicture='bindVideoEnterPictureInPicture'
+      bindleavepictureinpicture='bindVideoLeavePictureInPicture'
+    ></video>
+  </view>
+</view>
+
+<view id="main-shool">
+  <!---学校介绍-->
+  <view id="shool-titles">
+    <image class="school-about" mode="widthFix" src="http://api.jianshankeji.com/models/img/title_xuexiaoqitaxinxijieshao@3x.png"  style="width:100%;vertical-align: bottom;"></image>
+  </view>
+  <view id="shool-infos" style="background-image:url('http://api.jianshankeji.com/models/img/bg1@3x.png')">
+    <view class="infos-name">
+      <image class="school-about" mode="widthFix" src="http://api.jianshankeji.com/models/img/title_xuexiaoxinxi@3x.png"  style="width:100%;vertical-align: bottom;"></image>
+    </view>
+    <view class="items-info">
+      <view class="imtes-left">学校名：</view>
+      <view class="imtes-right">{{currentSchoolInfo.schoolName}}</view>
+    </view>
+    <view class="items-info">
+      <view class="imtes-left">学校别名：</view>
+      <view class="imtes-right">{{currentSchoolInfo.schoolAname}}</view>
+    </view>
+    <view class="items-info">
+      <view class="imtes-left">学校性质：</view>
+      <view class="imtes-right">{{currentSchoolInfo.schoolType}}</view>
+    </view>
+    <view class="items-info">
+      <view class="imtes-left">费用信息：</view>
+      <view class="imtes-right">{{currentSchoolInfo.schoolCost}}</view>
+    </view>
+    <view class="items-info">
+      <view class="imtes-left">班级设置</view>
+      <view class="imtes-right">{{currentSchoolInfo.schoolClass}}</view>
+    </view>
+    <view class="items-info">
+      <view class="imtes-left">课程特色：</view>
+      <view class="imtes-right">{{currentSchoolInfo.schoolFeature}}</view>
+    </view>
+    <view class="items-info">
+      <view class="imtes-left">其它信息：</view>
+      <view class="imtes-right">暂无</view>
+    </view>
+  </view>
+</view>
+
+<view id="main-models">
+  <!---学校三维模型展示-->
+  <view id="models-titles">
+    <image class="school-about" bindtap="geturl" data-url='{{currentSchoolInfo.modelUrl}}' mode="widthFix" src="http://api.jianshankeji.com/models/img/title_sanweimoxing@3x.png"  style="width:100%;vertical-align: bottom;"></image>
+  </view>
+  <view id="models-box" style="background-image:url('http://api.jianshankeji.com/models/img/bg2@3x.png')">
+    <view class="innerCanvas" bindtap="geturl" data-url='{{currentSchoolInfo.modelUrl}}' style="background-image:url('http://api.jianshankeji.com/models/img/zhuangshikuang@3x.png')">
+      <!-- <canvas type="webgl" id="c" style="width: 100%; height:100%;" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" bindtouchcancel="touchCancel" bindlongtap="longTap" bindtap="tap"></canvas> -->
+      <dimenshow  width="100%" height="100%" moveFre="10" autoplay="" view="360" src="{{pics}}">
+        </dimenshow>
+    </view>
+  </view>
+</view>
