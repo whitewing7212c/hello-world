@@ -1,0 +1,109 @@
+/* pages/schoolInfo/index.wxss */
+#main-area{
+  width: 100vw;
+  /* height: 35vh; */
+  margin-top:10vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.clearfloat{clear:both;height:0;font-size: 1px;line-height: 0px;} 
+.page-section{
+  padding-bottom: 10px;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-size: 90%;
+  width: 90%;
+  margin: 0 auto;
+}
+.page-section-spacing{
+  margin-top: 60rpx;
+}
+.scroll-view_H{
+  white-space: nowrap;
+}
+.scroll-view-item{
+  height: 50rpx;
+}
+.scroll-view-item_H{
+  display: inline-block;
+  width: 25%;
+  color:white;
+}
+.infos-name{
+  width: 90vw;
+  margin: 0 auto;
+}
+.areabtnActive{
+  background-image: url('http://api.jianshankeji.com/models/img/borderActive.png');
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat; 
+}
+#main-videos{
+  width:100vw;
+  margin-top:3vh;
+}
+#video-body{
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;  
+  width: 100vw;
+  margin: 0 auto;
+}
+#myVideo{
+  width: 90vw;
+  margin-left:5vw;
+  margin-top:10rpx;
+}
+#video-titles{
+  width:60vw;
+  height:5vh;
+  margin: 0 auto;
+}
+#shool-titles{
+  width:60vw;
+  height:5vh;
+  margin: 0 auto;
+  padding:1rem;
+}
+#shool-infos{
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding:0.5rem;
+  width: 90vw;
+  margin: 0 auto;
+}
+.items-info{
+  color:white;
+  font-size: 0.8rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0.4rem;
+}
+.imtes-left,.imtes-right{
+  display: inline-block;
+}
+#models-titles{
+  width:60vw;
+  height:5vh;
+  margin: 0 auto;
+  padding-bottom: 1rem;
+}
+#models-box{
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;  
+  width: 95vw;
+  height: 45vh;
+  margin: 0 auto;
+}
+.innerCanvas{
+  width: 90vw;
+  height: 35vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 0 auto;
+}
